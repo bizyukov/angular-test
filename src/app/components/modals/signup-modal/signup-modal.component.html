@@ -1,0 +1,107 @@
+<div *nzModalTitle>SignUp Modal</div>
+<div>
+	<form nz-form [formGroup]="validateForm" class="login-form m-auto" (ngSubmit)="submitForm()">
+		<nz-form-item>
+			<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired
+						   nzFor="firstName">FIRSTNAME</nz-form-label>
+			<nz-form-control nzErrorTip="REQUIRED_FIELD">
+				<nz-input-group>
+					<input type="text" nz-input formControlName="firstName" class="ant-input"
+						   placeholder="FIRSTNAME"/>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+
+		<nz-form-item>
+			<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired
+						   nzFor="firstName">LASTNAME</nz-form-label>
+			<nz-form-control nzErrorTip="REQUIRED_FIELD">
+				<nz-input-group>
+					<input type="text" nz-input formControlName="lastName" class="ant-input"
+						   placeholder="LASTNAME"/>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+
+		<nz-form-item>
+			<nz-form-label [nzSm]="6" [nzXs]="24"
+						   nzFor="firstName">MIDDLENAME</nz-form-label>
+			<nz-form-control nzErrorTip="REQUIRED_FIELD">
+				<nz-input-group>
+					<input type="text" nz-input formControlName="middleName" class="ant-input"
+						   placeholder="MIDDLENAME"/>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+
+		<nz-form-item>
+			<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired
+						   nzFor="firstName">PHONE</nz-form-label>
+			<nz-form-control nzErrorTip="REQUIRED_FIELD">
+				<nz-input-group>
+					<input type="text" nz-input formControlName="phone" class="ant-input"
+						   placeholder="PHONE"/>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+
+		<nz-form-item>
+			<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired
+						   nzFor="firstName">EMAIL</nz-form-label>
+			<nz-form-control nzErrorTip="REQUIRED_FIELD">
+				<nz-input-group>
+					<input type="email" nz-input formControlName="email" class="ant-input"
+						   placeholder="EMAIL"/>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+
+		<nz-form-item>
+			<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired
+						   nzFor="firstName">PASSWORD</nz-form-label>
+			<nz-form-control nzErrorTip="REQUIRED_FIELD">
+				<nz-input-group nzPrefixIcon="lock">
+					<input type="password" nz-input formControlName="password" class="ant-input"
+						   (ngModelChange)="updateConfirmValidator()"
+						   placeholder="PASSWORD"/>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-label [nzSm]="6" [nzXs]="24" nzRequired
+						   nzFor="firstName">PASSWORD_CONFIRM</nz-form-label>
+			<nz-form-control [nzErrorTip]="errorTpl">
+				<nz-input-group nzPrefixIcon="lock">
+					<input type="password" nz-input formControlName="passwordConfirm" class="ant-input"
+						   placeholder="PASSWORD_CONFIRM"/>
+					<ng-template #errorTpl let-control>
+						<ng-container
+								*ngIf="control.hasError('required')">REQUIRED_FIELD</ng-container>
+						<ng-container *ngIf="control.hasError('confirm')">
+							Two passwords that you enter is inconsistent!
+						</ng-container>
+					</ng-template>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+
+		<nz-form-item nz-row class="register-area">
+			<nz-form-control [nzSpan]="14" [nzOffset]="6">
+				<label nz-checkbox formControlName="agree">
+					<span> I have read the <a>agreement</a> </span>
+				</label>
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item nz-row class="register-area">
+			<nz-form-control [nzSpan]="14" [nzOffset]="6">
+					<button nz-button class="login-form-button login-form-margin"
+						[nzType]="'primary'">SIGNUP</button>
+			</nz-form-control>
+		</nz-form-item>
+	</form>
+</div>
+<div *nzModalFooter>
+	<button nz-button nzType="default" class="login-form-button login-form-margin signin-btn"
+			(click)="openSignInModal()">SIGNIN</button>
+	<button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+</div>

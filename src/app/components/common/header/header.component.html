@@ -1,0 +1,33 @@
+<header>
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+		<h5 class="my-0 mr-md-auto font-weight-normal">
+			<a href="/">
+				Test Angular App
+			</a>
+		</h5>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="#">Features</a>
+			<a class="p-2 text-dark" href="#">Enterprise</a>
+			<a class="p-2 text-dark" href="#">Support</a>
+		</nav>
+
+		<div *ngIf="!user.id" class="btn-group mr-4">
+			<button class="btn btn-outline-primary ant-btn mr-4" (click)="openSignUpModal()">SIGNUP</button>
+			<button class="btn btn-outline-primary ant-btn" (click)="openSignInModal()">SIGNIN</button>
+		</div>
+
+		<div *ngIf="user.id" class="btn-group mr-4">
+			<nz-badge [nzCount]="5" nz-dropdown [nzDropdownMenu]="menu" style="margin-right: 24px;">
+				<nz-avatar nzIcon="user" [nzShape]="'square'"></nz-avatar>
+			</nz-badge>
+			<nz-dropdown-menu #menu="nzDropdownMenu">
+				<ul nz-menu nzSelectable>
+					<li nz-menu-item>1st menu item</li>
+					<li nz-menu-item>2nd menu item</li>
+					<li nz-menu-item>3rd menu item</li>
+					<li nz-menu-item nzDanger (click)="logout()">LOGOUT</li>
+				</ul>
+			</nz-dropdown-menu>
+		</div>
+	</div>
+</header>

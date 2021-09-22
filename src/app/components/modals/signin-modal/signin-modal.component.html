@@ -1,0 +1,50 @@
+<div *nzModalTitle>Sign in modal</div>
+<div>
+	<form nz-form [formGroup]="validateForm" class="login-form m-auto" (ngSubmit)="submitForm()">
+		<nz-form-item>
+			<nz-form-control nzErrorTip="username_err">
+				<nz-input-group nzPrefixIcon="user">
+					<input type="text" nz-input formControlName="email"
+						   placeholder="Email"/>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+		<nz-form-item>
+			<nz-form-control nzErrorTip="password_err">
+				<nz-input-group nzPrefixIcon="lock">
+					<input type="password" nz-input formControlName="password"
+						   placeholder="Password"/>
+				</nz-input-group>
+			</nz-form-control>
+		</nz-form-item>
+		<div nz-row class="login-form-margin">
+			<div nz-col [nzSpan]="12">
+				<label nz-checkbox formControlName="remember">
+					<span>Remember me</span>
+				</label>
+			</div>
+			<div nz-col [nzSpan]="12">
+				<a class="login-form-forgot" href="/forgotPass">Forgot password?</a>
+			</div>
+		</div>
+		<button nz-button class="login-form-button login-form-margin"
+				[nzType]="'primary'">Sign in</button>
+
+	</form>
+	<div nz-row class="login-form-margin">
+		<div nz-col [nzSpan]="24" class="text-center text-capitalize">
+			or
+		</div>
+	</div>
+	<div nz-row class="login-form-margin">
+		<div nz-col [nzSpan]="24" class="text-center text-capitalize">
+			<button nz-button class="login-form-button login-form-margin signin-btn"
+					(click)="openSignUpModal()"
+					nzType="default">Signup</button>
+		</div>
+	</div>
+
+</div>
+<div *nzModalFooter>
+	<button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+</div>
